@@ -4,15 +4,12 @@
     box-sizing: border-box;
 }
 
-
-/* .carousel-inner > .carousel-item > img,  .carousel-inner > .carousel-item > .d-block > img  */
-.carrousel-special-image {
-    width: 100%;
-    height: 20rem;
-}
-
-.carrousel-special-background {
-    background-color:  #00a2ff ;
+:root {
+    --font--small: 0.8rem;
+    --opacity--color:rgba(0, 0, 0, 0.048);
+    --font--paragraphs: 'Ultra', serif;
+    --font--title: 'Noto Sans', sans-serif;
+    --font--banner: 'Alkatra', cursive;
 }
 
 body {
@@ -24,6 +21,35 @@ a {
     text-decoration: none;
 
   }
+
+
+/* BANNER */
+.carrousel-special-background {
+    display: flex;
+    background-color:  #00a2ff ;
+}
+.carrousel-special-image {
+    width: 100%;
+    height: 20rem;
+}
+.banner-text {
+    display:none;
+    width:100%;
+    margin: 0 auto;
+    align-self: center;
+    text-align: center;
+    font-family: var(--font--banner);
+    font-size: 8vw;
+    font-weight: 600;
+    color: white;
+    flex-wrap: wrap;
+}
+.carrousel-special-image {
+    object-fit:cover;
+    object-position: top;
+}
+
+
  
   
 .card {
@@ -41,25 +67,10 @@ a {
     height: 180px;
 }
 
-.card .galery-container img{
-    max-height: 180px;
-    height:90%;
-    width:90%;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-}
 
 
-.card-body {
-    padding: 10px;
-}
-  
-.card-title {
-    font-size: 18px;
-    margin-bottom: 5px;
-    min-height: 3rem;
-}
-  
+
+
 .card-text {
     font-size: 14px;
     color: #666;
@@ -68,8 +79,13 @@ a {
 }
   
 
-
-
+/* NAVBAR */
+.username {
+    color:white;
+}
+.username:hover {
+    color:white;
+}
 .navbar-nav a {
     margin: auto 1rem;
 }
@@ -96,6 +112,7 @@ a {
 
 /* MOBILE FIRST */
 
+/* BASE_GALERY */
 
 .galery__container {
     display:flex;
@@ -125,19 +142,6 @@ a {
     min-width: 110px;
 }
 
-
-@media (min-width:500px) and (max-width:749px) {
-    .galery__card {
-        width:30%;
-    }
-}
-
-@media (min-width:750px) {
-    .galery__card {
-        width:15%;
-        min-width: 160px;
-    }
-}
 .card__header {
 
     height: 10rem;
@@ -145,9 +149,6 @@ a {
     border-radius: inherit;
 }
 
-/* .card__header--image--container {
-
-} */
 .card__header--image {
     display:block;
     margin: 0 auto;
@@ -172,10 +173,6 @@ del footer */
         
 }
 
-:root {
-    --font--small: 0.8rem;
-    --opacity--color:rgba(0, 0, 0, 0.048);
-}
 
 
 
@@ -210,11 +207,129 @@ del footer */
     
 }
 
-.card__footer {
-    
+.card__footer {    
     align-self: flex-end;
     flex-shrink: 2;
     flex-grow: 0;
-
 }
 
+/* LISTING */
+
+.listing__grid--container {
+    width:100%;
+    margin: 0 auto;
+    max-width: 900px;
+    background-color: gray;
+
+    padding:1rem;
+    border-radius: 0.5rem;
+
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+    "title title"
+    "image image"
+    "image image"
+    "text text"
+    "bid bid"
+    "btn btn";
+}
+
+.listing__image--container{
+    grid-area: image;
+    border-radius: inherit;
+}
+.listing__image{
+    display:block;
+    border-radius: inherit;
+    margin: 0 auto;
+    width: 100%;
+}
+.listing__body--header {
+    grid-area: title;
+    text-align: center;
+}
+
+.listing__body--main {
+    grid-area: text;
+}
+
+.listing__body--footer{
+    grid-area: btn;
+    padding: 1rem;
+    margin: 0 auto;
+}
+
+.bid__card {
+    padding: 1rem;
+    grid-area: bid;
+    text-align:center;
+}
+
+/* boostrap class */
+.input-group {
+    width: 100%;
+    max-width:300px;
+    flex-wrap: nowrap;
+    margin: 0 auto;
+}
+@media (min-width:500px) and (max-width:749px) {
+    .banner-text {
+        display: none;
+    }
+
+    .galery__card {
+        width:30%;
+    }
+    .listing__grid--container {
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-areas:
+        "image image title title"
+        "image image text text"
+        "bid bid btn btn";     
+    }
+    .listing__body--footer{
+        margin: 0 0 0 auto;
+        align-self: flex-end;
+    }
+    .listing__body--main {
+        padding-left: 0.5rem;
+    }
+}
+
+@media (min-width:750px) {
+    .banner-text {
+        display: block;
+    }
+    
+    .galery__card {
+        width:15%;
+        min-width: 160px;
+    }
+    .listing__grid--container {
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-areas:
+        "title title title title"
+        "image image text text"
+        "image image text text"
+        "bid bid bid btn"
+       ;
+    }
+    .listing__body--header {
+        padding: 1rem 0;
+    }
+    .listing__body--footer{
+        margin: 0 0 0 auto;
+        align-self: flex-end;
+    }
+    .bid__card {
+        padding: 1rem 0 1rem 3rem;
+        margin: 0 auto 0 0;
+    }
+    .input-group {
+        font-size: 0.8rem;
+    }
+    .listing__body--main {
+        padding: 0 1rem;
+    }
+}
