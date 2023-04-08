@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
+
 
 /* .carousel-inner > .carousel-item > img,  .carousel-inner > .carousel-item > .d-block > img  */
 .carrousel-special-image {
@@ -79,3 +85,136 @@ a {
     border-color:#00a2ff ;
     color: black;
 }
+
+
+
+
+
+
+/* UP THE PREVIOUS STYLES */
+
+
+/* MOBILE FIRST */
+
+
+.galery__container {
+    display:flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap:0.5rem;
+}
+
+/* flex para calcular el height de la card */
+.galery__card--link--arround {
+    display:flex;
+    flex-direction: column;
+    text-decoration: none;
+    color:black;
+
+    width:100%;
+    height:100%;
+    border-radius: inherit;
+}
+
+.galery__card {
+    background-color: aliceblue;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    width:45%;
+    max-width: 180px;
+    min-width: 110px;
+}
+
+
+@media (min-width:500px) and (max-width:749px) {
+    .galery__card {
+        width:30%;
+    }
+}
+
+@media (min-width:750px) {
+    .galery__card {
+        width:15%;
+        min-width: 160px;
+    }
+}
+.card__header {
+
+    height: 10rem;
+    width:100%;
+    border-radius: inherit;
+}
+
+/* .card__header--image--container {
+
+} */
+.card__header--image {
+    display:block;
+    margin: 0 auto;
+    border-radius: inherit;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: top;
+}
+
+/* aprovechando la herencia para cambiar el shrink grow
+del footer */
+.card__body {
+
+    display:flex;
+
+    flex-shrink: 0;
+    flex-grow: 1;
+
+    flex-direction: column;
+    justify-content: space-between;
+        
+}
+
+:root {
+    --font--small: 0.8rem;
+    --opacity--color:rgba(0, 0, 0, 0.048);
+}
+
+
+
+.card__body--title {
+    min-height: 3rem;
+    overflow: hidden;
+}
+
+.card__body--text {
+
+    overflow: hidden;
+}
+
+.card__body--status {
+    font-size: var(--font--small);
+    flex-shrink: 2;
+    flex-grow: 0;
+}
+
+.card__body--unfollow {
+    font-size: var(--font--small);
+    flex-shrink: 2;
+    flex-grow: 0;
+}
+
+.card__body--unfollow--btn {
+    background-color: orange;
+    margin: 0.2rem 0;
+    padding: 0.1rem;
+    border-radius: 0.4rem;
+    display:block;
+    
+}
+
+.card__footer {
+    
+    align-self: flex-end;
+    flex-shrink: 2;
+    flex-grow: 0;
+
+}
+

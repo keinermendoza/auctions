@@ -38,17 +38,30 @@ class Listing(models.Model):
         return self.bid.count()
 
     def short_description(self):
-        """return the entire description if is lees than 30 characters
-        else return a sub-string cutted at the last word lees than 30 characters,
+        """return the entire description if is lees than the "limit" characters
+        else return a sub-string cutted at the last word lees than "limit" characters,
         adding '...' at the end"""
 
-        limit = 80
+        limit = 50
         if len(self.description) >= limit:
             description = self.description[:limit]
             i = description.rfind(" ")
             return f"{description[:i]}..."
         else:
             return self.description
+
+    def short_name(self):
+        """return the entire name if is lees than the "limit" characters
+        else return a sub-string cutted at the last word lees than "limit" characters,
+        adding '...' at the end"""
+
+        limit = 25
+        if len(self.name) >= limit:
+            title = self.name[:limit]
+            i = title.rfind(" ")
+            return f"{title[:i]}..."
+        else:
+            return self.name
 
 
 class Comment(models.Model):

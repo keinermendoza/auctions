@@ -20,57 +20,52 @@
    
     <!-- LISTING GALERY -->
     <!-- galery__container is a class for give style to the background galery i also add a contaner bootstrap class-->
-    <section class="galery__container row row-cols-2 row-cols-sm-3 row-cols-lg-4  row-cols-xl-5 m-0 m-md-3 pt-3 ">
+    <section class="galery__container">
 
     {% for listing in listings %}
         {% if listing.active or watchlist %}
         
-        <a class="galery__link" href="{% url 'listing' listing.id %}">
-
-            <div class="col">
-                <div class="card">
-
-                <div class="galery-container">
-                {% if listing.image %}
-                    <img src="{{listing.image}}"  alt="{{listing.name}} image">
-                {% else %}
-                    <img src="{% static 'auctions/default.jpg' %}" alt="{{listing.name}} image">
-                {% endif %}
-                </div>
-
-                    <div class="card-body">
-                        <h5 class="card-title">{{listing.name}}</h5>
-                        <p class="card-text">{{listing.short_description}}</p>
-                    {% if watchlist %}
-                        {% if listing.active %}
-                        <span class="card-text pb-2">Status: Active</span>
-                        {% else %}
-                        <span class="card-text pb-2">Status: Closed</span>
-                        {% endif %}
-                        
-                        <div class="row justify-content-end">
-                            <div class="col-auto">
-                                <form action="{% url 'remove_from_watchlist' %}" method="post">
-                                    {% csrf_token %}
-                                    <input type="hidden" name="favorite_id" value="{{listing.id}}">
-                                    <input type="submit" class="btn btn-warning btn-sm" value="Unfollow">
-                                </form>
-                            </div>
-                        </div>
+        <section class="galery__card">
+            <a class="galery__card--link--arround" href="{% url 'listing' listing.id %}">
+                <!-- <div class="card"> -->
+                <!-- <header class="card__header"> -->
+                    <figure class="card__header">
+                    {% if listing.image %}
+                        <img class="card__header--image" src="{{listing.image}}"  alt="{{listing.name}} image">
+                    {% else %}
+                        <img class="card__header--image" src="{% static 'auctions/default.jpg' %}" alt="{{listing.name}} image">
                     {% endif %}
-                    </div>
+                    </figure>
+                <!-- </header> -->
 
-                    <div class="card-footer">
-                        <small class="text-muted">Price: {{listing.price}}.00$</small>
-                    </div>
-                <!-- end card -->
-                </div>
-            <!-- end col -->
-            </div>
-        </a>
+                <main class="card__body">
+                    <h5 class="card__body--title">{{listing.short_name}}</h5>
+                    <p class="card__body--text">{{listing.short_description}}</p>
 
-            <!-- end of listing.active or watchlist -->
-            {% endif %}
+                {% if watchlist %}
+                    {% if listing.active %}
+                        <span class="card__body--status">Status: Active</span>
+                    {% else %}
+                        <span class="card__body--status">Status: Closed</span>
+                    {% endif %}
+                        
+                    
+                    <div class="card__body--unfollow">
+                        <form action="{% url 'remove_from_watchlist' %}" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="favorite_id" value="{{listing.id}}">
+                            <input type="submit" class="card__body--unfollow--btn" value="Unfollow">
+                            </form>
+                    </div>
+                {% endif %}
+                    
+                        <span class="card__footer">Price: {{listing.price}}.00$</span>
+                </main>
+            </a>
+        </section>
+            
+
+        {% endif %}
 
        
         {% empty %}
