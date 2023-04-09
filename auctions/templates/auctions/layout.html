@@ -24,6 +24,7 @@
         <title>{% block title %}Auctions{% endblock %}</title>
     </head>
     <body>
+        <div class="container-xxl">
         
         
         
@@ -61,7 +62,7 @@
                         {% if user.is_authenticated %}
                             <span class="nav-link username">Signed in as <strong>{{ user.username }}</strong></span>
                         {% else %}
-                            <span class="nav-link">Not signed in.</span>
+                            <span class="nav-link username">Not signed in.</span>
                         {% endif %}
                     </div>
                 </div>
@@ -76,7 +77,6 @@
         <br>
         <br>
         
-        <div class="container-xxl">
         {% block body %}
         {% endblock %}
         </div>

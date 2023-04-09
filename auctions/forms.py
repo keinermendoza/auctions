@@ -35,7 +35,7 @@ class ListingForm(forms.ModelForm):
             Field("seller", type="hidden"),
             Field("active", type="hidden"),
             Field('date', type="hidden"),
-            Submit('submit', 'Submit', css_class='btn btn-primary btn-lg float-end'),
+            Submit('submit', 'Submit', css_class='btn btn-mycolor btn-lg float-end'),
         )
         
         # https://stackoverflow.com/questions/19076965/how-to-put-a-value-from-request-get-as-a-hidden-input-in-django-crispy-forms/19077186#19077186

@@ -132,11 +132,13 @@ def category(request, category_value):
         "title":category.category,
     })
    
+
 def listing(request, listing_id):
 
     # For show a helper message outside of the forms
     message = False
-
+    best_bid = False
+    
     # POST METHOD IS FOR MANAGE BID CREATION
     if request.method == "POST":
         
