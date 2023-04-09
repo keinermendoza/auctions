@@ -20,8 +20,9 @@ def create(request):
      
         if listing_form_filled.is_valid():
             
-            listing_form_filled.save()
-            return HttpResponseRedirect(reverse("index"))
+            new_listing = listing_form_filled.save()
+            listing_id = new_listing.pk
+            return HttpResponseRedirect(reverse("add_to_watchlist", args=[listing_id]))
 
         return render(request, "auctions/create.html",{
             "listing_form":listing_form_filled
@@ -43,8 +44,8 @@ def watchlist(request):
 
 
 @login_required
-def add_to_watchlist(request):
-    listing_id = int(request.POST["listing"])
+def add_to_watchlist(request, listing_id):
+    listing_id = int(listing_id)
     user = User.objects.get(pk=request.user.id)
     user.favorites.add(listing_id)
 
@@ -165,9 +166,12 @@ def listing(request, listing_id):
             except ValidationError:
                 message = True
 
-            # if valid save the object in the DB
+            # if all it's OK
             else:
                 bid.save()
+                # add to watchlist, and watchlist redirect to this view in GET method
+                return HttpResponseRedirect(reverse("add_to_watchlist", args=[listing_id]))
+
 
     # GET METHOD
     listing = Listing.objects.get(pk=int(listing_id))

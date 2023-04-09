@@ -10,15 +10,40 @@
     --font--paragraphs: 'Ultra', serif;
     --font--title: 'Noto Sans', sans-serif;
     --font--banner: 'Alkatra', cursive;
-    --card--color: #ccc;
+    --card--color: rgb(229, 233, 245);
     --card--shadow: 10px 10px 5px rgba(0,0,0,0.5);
     --btn--color: #5E04D9;
 }
 
-body {
-    background-color: #00a2ff;
+.footer__body {
+    display:flex;
+    justify-content: center;
+
+    width:100%;
+    margin-top: 3rem;
+    padding: 1rem 0;
+    background-color:aliceblue;
+}
+.redes {
+    padding-top: 1rem;
+    list-style: none;
+    text-decoration: none;
+    display:flex;
+    justify-content:space-between;
+}
+.footer__content {
+
+}
+.redes__image {
+    height: 2rem;
 }
 
+.mycontainer {
+    background-color: #00a2ff;
+    margin: 0 auto;
+    width:100%;
+    max-width:1400px;
+}
 
 a {
     outline: none;
@@ -51,16 +76,18 @@ a {
     flex-wrap: wrap;
 }
 
+.carrousel-special-image {
+    object-fit:cover;
+    object-position: center;
+}
+
 @media (min-width:1900px) {
     .banner-text {
         font-size: 7rem;  
     }
 }
 
-.carrousel-special-image {
-    object-fit:cover;
-    object-position: top;
-}
+
 
 
 /* NAVBAR */

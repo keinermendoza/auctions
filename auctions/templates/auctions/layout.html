@@ -23,8 +23,8 @@
         <link href="{% static 'auctions/styles.css' %}" rel="stylesheet">
         <title>{% block title %}Auctions{% endblock %}</title>
     </head>
-    <body>
-        <div class="container-xxl">
+    <body >
+        <div class="mycontainer">
         
         
         
@@ -76,9 +76,30 @@
 
         <br>
         <br>
-        
-        {% block body %}
-        {% endblock %}
+
+        <div class="container-xxl">
+            {% block body %}
+            {% endblock %}
+      
         </div>
+        <footer class="footer__body">
+            <div class="footer__content">
+            <h5 class="text-center">Web App Made By Keiner Mendoza</h5>
+            <ul class="redes">
+                <li><a target="_blank" href="https://github.com/keinermendoza/">
+                    <img class="redes__image" src="{% static 'auctions/github.svg' %}" alt="GitHub">
+                </a></li>
+                <li><a target="_blank" href="https://www.youtube.com/channel/UCeZssHQPq4WT8K-_v0SfOPw">
+                    <img class="redes__image" src="{% static 'auctions/youtube.svg' %}" alt="YouTube">
+                </a></li>
+                <li><a target="_blank" href="https://www.linkedin.com/in/keiner-asael-mendoza-andrade-988ab594/">
+                    <img class="redes__image" src="{% static 'auctions/linkedin.svg' %}" alt="LinkedIn">
+                </a></li>       
+            </ul>
+            </div>
+        </footer>
+            
+        </div>
+
     </body>
 </html>

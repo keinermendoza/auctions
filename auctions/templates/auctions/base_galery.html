@@ -24,6 +24,7 @@
 
     {% for listing in listings %}
         {% if listing.active or watchlist %}
+
         
         <section class="galery__card">
             <a class="galery__card--link--arround" href="{% url 'listing' listing.id %}">
@@ -43,12 +44,22 @@
                     <p class="card__body--text">{{listing.short_description}}</p>
 
                 {% if watchlist %}
+
+
                     {% if listing.active %}
                         <span class="card__body--status">Status: Active</span>
                     {% else %}
                         <span class="card__body--status">Status: Closed</span>
                     {% endif %}
-                        
+
+                    {% if user.id == listing.seller.id %}
+                        <span class="card__body--status"><u>This is your Listing!!</u></span>
+                    {% else %}
+                        <p></p>
+                    {% endif %} 
+
+                    
+
                     
                     <div class="card__body--unfollow">
                         <form action="{% url 'remove_from_watchlist' %}" method="post">
@@ -57,9 +68,10 @@
                             <input type="submit" class="card__body--unfollow--btn" value="Unfollow">
                             </form>
                     </div>
+                    
                 {% endif %}
                     
-                        <span class="card__footer">Price: {{listing.price}}.00$</span>
+                    <span class="card__footer">Price: {{listing.price}}.00$</span>
                 </main>
             </a>
         </section>
