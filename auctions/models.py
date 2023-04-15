@@ -18,6 +18,9 @@ class Category(models.Model):
     def __str__(self):
         return self.category
         
+    class Meta:
+        verbose_name_plural = "Categories"
+        
 class Listing(models.Model):
     name = models.CharField(max_length=64)
     description = models.TextField()

@@ -33,7 +33,7 @@ class CommentAdmin(admin.ModelAdmin):
     list_display = ("id", "user", "listing", "message", "date")
 
 class ListingAdmin(admin.ModelAdmin):
-    list_display = ("id", "seller", "name", "price", "active", "best_bidder", "best_price")
+    list_display = ("id", "seller", "name", "price", "active", "best_bidder")
     actions = [desactive, active]
     @admin.display(ordering="bid__price", description="Best Bidder")
     def best_bidder(self, Listing):
@@ -42,28 +42,17 @@ class ListingAdmin(admin.ModelAdmin):
             best = bidder.order_by("-price").first()
             return best.offerent
         else:
-            return ""
+            return "No Bids"
 
-    @admin.display(ordering="bid__price", description="Best Price")
-    def best_price(self, Listing):
-        bidder = Listing.bid.all()
-        if bidder:
-            best = bidder.order_by("-price").first()
-            return best.price
-        else:
-            return ""
         
 
 class BidAdmin(admin.ModelAdmin):
-    list_display = ("id", "offerent", "listing_name", "original_price", "price")
+    list_display = ("id", "offerent", "listing_name", "price")
 
     @admin.display(ordering="listing__name", description="Listing")
     def listing_name(self, Bid):
         return Bid.listing.name
 
-    @admin.display(ordering="listing__price", description="Original Price")
-    def original_price(self, Bid):
-        return Bid.listing.price
 
         
 admin.site.register(User, UserAdmin)

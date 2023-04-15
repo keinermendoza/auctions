@@ -54,8 +54,8 @@ a {
 /* BANNER */
 /* image container */
 .carrousel-special-background {
-    display: unset;
-    
+    display: block;
+    height:auto;
     background-color:  #1428CC;
 }
 .carrousel-special-image {
@@ -308,6 +308,9 @@ del footer */
     margin: 0 auto;
 }
 @media (min-width:500px) and (max-width:749px) {
+    .carrousel-special-background {
+        display: unset;
+    }
     .banner-text {
         display: none;
     }
